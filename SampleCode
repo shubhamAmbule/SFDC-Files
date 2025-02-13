@@ -1,0 +1,10 @@
+@RestResource(urlMapping='/customer/*')
+global with sharing class CustomerService {
+    @HttpGet
+    global static String getCustomer() {
+        RestRequest req = RestContext.request;
+        String customerId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
+        Customer__c cust = [SELECT Id, Name, Email__c FROM Customer__c WHERE Id = :customerId LIMIT 1];
+        return JSON.serialize(cust);
+    }
+}
