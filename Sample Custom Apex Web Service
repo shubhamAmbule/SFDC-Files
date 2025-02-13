@@ -1,0 +1,7 @@
+global class CustomIntegrationService {
+    webservice static String processData(String inputData) {
+        // Implement custom business logic here
+        String processedData = 'Processed: ' + inputData;
+        return processedData;
+    }
+}
